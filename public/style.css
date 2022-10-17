@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@100;200;300;400;500;600;700&display=swap');
+
+html, body {
+	height: 100%;
+	background-color: #F9F9F9;
+	font-family: 'Fira Sans Extra Condensed', sans-serif;
+}
+:root {
+	--sidebar-bg-color: #2f855a;
+	--sidebar-item-hover: #38a169;
+	--sidebar-item-active: #276749;
+}
+#app {
+	min-height: 100%;
+}
