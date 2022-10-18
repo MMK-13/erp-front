@@ -49,7 +49,7 @@
 		box-shadow: 2px 1px 2px #152238;
 		border-right: #152238;
 		color: #FFF;
-		height: 100vh;
+		grid-row-start: span 2;
 	}
 	.header {
 		display: flex;
