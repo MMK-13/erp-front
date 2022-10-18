@@ -49,7 +49,6 @@
 		box-shadow: 2px 1px 2px #152238;
 		border-right: #152238;
 		color: #FFF;
-		width: 280px;
 		height: 100vh;
 	}
 	.header {
