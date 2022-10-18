@@ -14,6 +14,7 @@
 	.container {
 		display: grid;
 		grid-template-columns: 280px 1fr;
+		grid-template-rows: 60px 1fr;
 		min-height: 100vh;
 	}
 </style>
