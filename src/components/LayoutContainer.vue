@@ -12,6 +12,8 @@
 
 <style scoped>
 	.container {
+		display: grid;
+		grid-template-columns: 280px 1fr;
 		min-height: 100vh;
 	}
 </style>
