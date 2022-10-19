@@ -34,6 +34,7 @@
 	import InputField from './forms/InputField'
 	import InputButton from './forms/InputButton'
 	import AlertInfo from './forms/AlertInfo'
+	import { mapGetters, mapActions } from 'vuex'
 
 	export default {
 		name: 'LoginBox',
@@ -53,7 +54,22 @@
 				}
 			}
 		},
+		mounted() {
+			if (this.isConnected){
+				this.$router.push('/dashboard')
+			}
+		},
+		watch: {
+			isConnected(newValue) {
+				if (newValue === true)
+					this.$router.push('/dashboard')
+			}
+		},
+		computed: {
+			...mapGetters(['isConnected']),
+		},
 		methods: {
+			...mapActions(['setConnected']),
 			submit() {
 				if (this.username && this.password) {
 					fetch('http://erp.ru/user/login', {
@@ -71,13 +87,12 @@
 								type: 'dangerous'
 							}
 						} else {
+							this.setConnected(data.user)
 							this.alert = {
 								text: 'Connexion réussie !',
 								type: 'done'
 							}
 						}
-
-						console.log(data)
 					})
 					.catch((error) => console.log(error))
 				} else {
