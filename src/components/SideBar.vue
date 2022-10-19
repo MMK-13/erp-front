@@ -9,15 +9,18 @@
 			</div>
 			<div class="navigation">
 				<div class="navigation__tilte">Menu</div>
-				<SideBarLink v-for="(link, index) in links" 
-					:route="link.route"
-					:title="link.title"
-					:icon="link.icon"
-					:key="index" />
+				<SideBarLink v-for="(link, index) in links" class="item" 
+				:route="link.route"
+				:title="link.title"
+				:icon="link.icon"
+				:children="link.children"
+				:deep="0"
+				:key="index" />
 			</div>
 		</div>
 		<div class="sidebar__down">
-			<div>Logout</div>
+			<SideBarLink route="#" title="My account" icon="account_circle" :deep="0" />
+			<SideBarLink route="#" title="Settings" icon="settings" :deep="0" />
 		</div>
 	</aside>
 </template>
@@ -33,14 +36,52 @@
 		data() {
 			return {
 				links: [
-					{route: '/', title: 'Home', icon: 'home'},
-				]
+					{
+						route: '#',
+						title: 'Home',
+						icon: 'home',
+						children: [
+							{
+								route: '/',
+								title: 'Child 1',
+							}, {
+								route: '#',
+								title: 'Child 2',
+								children: [
+									{
+										route: '/',
+										title: 'Child 2.1',
+									}, {
+										route: '/',
+										title: 'Child 2.2'
+									}
+								]
+							},
+						]
+					}, {
+						route: '#',
+						title: 'Settings',
+						icon: 'settings',
+						children: [
+							{
+								route: '#',
+								title: 'Setting 1',
+							}, {
+								route: '#',
+								title: 'Setting 2',
+							},
+						]
+					}
+				],
 			}
 		}
 	}
 </script>
 
 <style scoped>
+	.item {
+		margin-bottom: 8px;
+	}
 	.sidebar {
 		display: flex;
 		flex-direction: column;
