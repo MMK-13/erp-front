@@ -9,7 +9,10 @@
 		</div>
 
 		<div class="header__right">
-			Right
+			<div class="user" @click="redirectToProfil">
+				<i class="material-icons">account_circle</i>
+				My account
+			</div>
 		</div>
 	</div>
 </template>
@@ -17,6 +20,11 @@
 <script>
 	export default {
 		name: 'TopHeader',
+		methods: {
+			redirectToProfil() {
+				alert('Profile')
+			}
+		}
 	}
 </script>
 
@@ -32,5 +40,23 @@
 		border-left: 1px solid #152238;
 		background-color: #203354;
 		box-shadow: 2px 2px 8px #152238;
+	}
+	.header__right {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 8px;
+	}
+	.user {
+		position: relative;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 8px;
+		cursor: pointer;
+	}
+	.user:hover {
+		background-color: #23395D;
+		color: #42B883;
 	}
 </style>
