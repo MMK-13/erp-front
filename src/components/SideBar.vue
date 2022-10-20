@@ -2,10 +2,13 @@
 	<aside class="sidebar">
 		<div class="sidebar__top">
 			<div class="header">
-				<img src="@/assets/logo.png" class="header__image">
-				<div class="header__title">
-					ERP
+				<div class="header__left">
+					<img src="@/assets/logo.png" class="header__image">
+					<div class="header__title">
+						ERP
+					</div>
 				</div>
+				<i class="material-icons expand">menu</i>
 			</div>
 			<div class="navigation">
 				<div class="navigation__tilte">Menu</div>
@@ -19,7 +22,6 @@
 			</div>
 		</div>
 		<div class="sidebar__down">
-			<SideBarLink route="#" title="My account" icon="account_circle" :deep="0" />
 			<SideBarLink route="#" title="Settings" icon="settings" :deep="0" />
 		</div>
 	</aside>
@@ -37,41 +39,10 @@
 			return {
 				links: [
 					{
-						route: '#',
+						route: '/',
 						title: 'Home',
-						icon: 'home',
-						children: [
-							{
-								route: '/',
-								title: 'Child 1',
-							}, {
-								route: '#',
-								title: 'Child 2',
-								children: [
-									{
-										route: '/',
-										title: 'Child 2.1',
-									}, {
-										route: '/',
-										title: 'Child 2.2'
-									}
-								]
-							},
-						]
-					}, {
-						route: '#',
-						title: 'Settings',
-						icon: 'settings',
-						children: [
-							{
-								route: '#',
-								title: 'Setting 1',
-							}, {
-								route: '#',
-								title: 'Setting 2',
-							},
-						]
-					}
+						icon: 'home'
+					},
 				],
 			}
 		}
@@ -79,6 +50,9 @@
 </script>
 
 <style scoped>
+	.expand {
+		cursor: pointer;
+	}
 	.item {
 		margin-bottom: 8px;
 	}
@@ -96,12 +70,17 @@
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-		justify-content: center;
+		justify-content: space-between;
 		border-bottom: 1px solid #152238;
 		background-color: #203354;
 		box-shadow: 0px 2px 8px #152238;
 		margin-bottom: 32px;
 		padding: 16px;
+	}
+	.header__left {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
 	}
 	.header__title {
 		font-weight: bold;
