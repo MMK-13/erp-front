@@ -57,6 +57,7 @@
 		margin-bottom: 8px;
 	}
 	.sidebar {
+		width: 240px;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
