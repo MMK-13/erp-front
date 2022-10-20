@@ -1,6 +1,6 @@
 <template>
 	<div class="card">
-		<AlertInfo :text="alert.text" :type="alert.type" v-if="showAlert" @click="hideAlert" />
+		<AlertInfo :text="alert.text" :type="alert.type" v-model:show="showAlert" />
 		<div class="card__header">
 			Connexion
 		</div>
@@ -102,9 +102,6 @@
 						type: 'warning'
 					}
 				}
-			},
-			hideAlert() {
-				this.showAlert = false
 			},
 		},
 	}

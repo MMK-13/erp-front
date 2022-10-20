@@ -1,18 +1,45 @@
 <template>
-	<div :class="'alert ' + type">
-		<i class="material-icons">{{ type }}</i>
-		{{ text }}
+	<div class="container">
+		<transition name="toast">
+			<div :class="'alert ' + type" @click="hideAlert" v-if="show">
+				<i class="material-icons">{{ type }}</i>
+				{{ text }}
+			</div>
+		</transition>
 	</div>
 </template>
 
 <script>
 	export default {
 		name: 'AlertInfo',
-		props: ['text', 'type'],
+		props: ['text', 'type', 'show'],
+		methods: {
+			hideAlert() {
+				this.$emit("update:show", false)
+			},
+		},
 	}
 </script>
 
 <style scoped>
+	.container {
+		display: inline-block;
+	}
+	.toast-enter-from,
+	.toast-leave-to {
+		opacity: 0;
+	}
+	.toast-enter-active,
+	.toast-leave-active {
+		transition: all 1s ease-in-out;
+		opacity: .3;
+		transform: translateX(300px);
+	}
+	.toast-enter-to,
+	.toast-leave-from {
+		opacity: 1;
+		transform: translateX(0px);
+	}
 	/* Warning, done, info, dangerous */
 	.alert {
 		position: fixed;
