@@ -37,11 +37,8 @@
 		},
 		methods: {
 			expand() {
-				if (this.children) {
+				if (this.children)
 					this.expanded = !this.expanded
-				} else {
-					alert(this.title + ' : Dont have any children')
-				}
 			}
 		},
 		computed: {
