@@ -99,4 +99,9 @@
 		border-right: 2px solid #42B883;
 		color: #42B883;
 	}
+	.rooter-link-active > .link {
+		background-color: #203354;
+		border-right: 2px solid #42B883;
+		color: #42B883;
+	}
 </style>
