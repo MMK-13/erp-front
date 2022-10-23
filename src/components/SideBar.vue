@@ -39,7 +39,7 @@
 			return {
 				links: [
 					{
-						route: '/',
+						route: '/dashboard',
 						title: 'Home',
 						icon: 'home'
 					},
