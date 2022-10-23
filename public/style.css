@@ -6,9 +6,7 @@ html, body {
 	font-family: 'Fira Sans Extra Condensed', sans-serif;
 }
 :root {
-	--sidebar-bg-color: #2f855a;
-	--sidebar-item-hover: #38a169;
-	--sidebar-item-active: #276749;
+	
 }
 #app {
 	min-height: 100%;
