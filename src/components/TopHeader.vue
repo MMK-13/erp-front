@@ -40,6 +40,7 @@
 		border-left: 1px solid #152238;
 		background-color: #203354;
 		box-shadow: 2px 2px 8px #152238;
+		grid-row-start: span 1;
 	}
 	.header__right {
 		display: flex;

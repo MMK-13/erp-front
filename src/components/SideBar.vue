@@ -65,7 +65,7 @@
 		box-shadow: 2px 1px 2px #152238;
 		border-right: #152238;
 		color: #FFF;
-		grid-row-start: span 2;
+		grid-row-start: span 3;
 	}
 	.header {
 		display: flex;
