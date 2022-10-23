@@ -12,7 +12,7 @@
 
 <style>
 	.main {
-		margin: 32px;
+		margin: 24px 32px;
 		padding: 16px;
 		border: 1px solid #EAEAEA;
 		background-color: #FFF;
