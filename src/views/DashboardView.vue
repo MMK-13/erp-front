@@ -1,5 +1,5 @@
 <template>
-	<LayoutContainer address="Home/Home page/Foo/Bar" title="Home Page">
+	<LayoutContainer address="Home" title="Home Page">
 		<h2>Home page</h2>
 	</LayoutContainer>
 </template>
