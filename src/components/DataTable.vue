@@ -147,6 +147,9 @@
 		border: 1px solid black;
 		font-size: 16px;
 	}
+	th i {
+		float: right;
+	}
 	td {
 		padding: 8px 16px;
 	}
