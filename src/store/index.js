@@ -10,6 +10,7 @@ const state = {
 const getters = {
 	isConnected: (state) => state.user.isLogged,
 	userData: (state) => state.user.data,
+	fullname: (state) => state.user.data.firstname + ' ' + state.user.data.lastname,
 }
 
 const mutations = {
