@@ -11,20 +11,25 @@
 		<div class="header__right">
 			<div class="user" @click="redirectToProfil">
 				<i class="material-icons">account_circle</i>
-				My account
+				{{ fullname }}
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+	import { mapGetters } from 'vuex'
+
 	export default {
 		name: 'TopHeader',
 		methods: {
 			redirectToProfil() {
-				alert('Profile')
+				this.$router.push('/profile')
 			}
-		}
+		},
+		computed: {
+			...mapGetters(['fullname'])
+		},
 	}
 </script>
 
