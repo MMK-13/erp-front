@@ -101,8 +101,8 @@
 			result() {
 				if (this.searchBar) {
 					const result = this.data.filter(element => {
-						for (let key in element) {
-							if (String(element[key]).toLowerCase().includes(this.search.toLowerCase()) || !this.search)
+						for (let field of element) {
+							if (String(field).toLowerCase().includes(this.search.toLowerCase()) || !this.search)
 								return true
 							// console.log(e)
 						}
