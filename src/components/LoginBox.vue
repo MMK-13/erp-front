@@ -94,7 +94,14 @@
 							}
 						}
 					})
-					.catch((error) => console.log(error))
+					.catch((error) => {
+						this.showAlert = true
+						this.alert = {
+							text: 'Impossible de se connecter. Veuillez vérifier votre connexion internet !',
+							type: 'dangerous'
+						}
+						console.log(error)
+					})
 				} else {
 					this.showAlert = true
 					this.alert = {
