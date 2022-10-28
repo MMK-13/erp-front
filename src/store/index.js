@@ -20,6 +20,10 @@ const mutations = {
 	CONNECTED: (state) => {
 		state.user.isLogged = true
 	},
+	DISCONNECTED: (state) => {
+		state.user.isLogged = false
+		state.user.data = {}
+	},
 	SET_USERNAME: (state, username) => {
 		state.user.data.username = username
 	},
@@ -30,6 +34,7 @@ const actions = {
 		store.commit('CONNECTED')
 		store.commit('SET_USER_INFO', data)
 	},
+	setDisconnected: (store) => store.commit('DISCONNECTED'),
 	setUsername: (store, username) => store.commit('SET_USERNAME', username),
 }
 

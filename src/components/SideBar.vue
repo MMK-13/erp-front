@@ -22,12 +22,13 @@
 			</div>
 		</div>
 		<div class="sidebar__down">
-			<SideBarLink route="#" title="Settings" icon="settings" :deep="0" />
+			<SideBarLink route="/" title="Logout" icon="logout" :deep="0" @click="logout" />
 		</div>
 	</aside>
 </template>
 
 <script>
+	import { mapActions } from 'vuex'
 	import SideBarLink from './SideBarLink'
 
 	export default {
@@ -45,7 +46,14 @@
 					},
 				],
 			}
-		}
+		},
+		methods: {
+			...mapActions(['setDisconnected']),
+			logout() {
+				this.setDisconnected()
+				this.$router.push('/')
+			},
+		},
 	}
 </script>
 
