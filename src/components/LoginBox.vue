@@ -1,32 +1,32 @@
 <template>
-	<div class="card">
+	<div style="margin-top: -240px;">
 		<AlertInfo :text="alert.text" :type="alert.type" v-model:show="showAlert" />
-		<div class="card__header">
-			Connexion
-		</div>
-		<div class="card__body">
-
-			<InputField
-			name="username"
-			label="Username"
-			type="text"
-			placeholder="Username..."
-			v-model:value="username" />
-			<InputField
-			name="password"
-			label="Password"
-			type="password"
-			placeholder="Password..."
-			v-model:value="password" />
-		</div>
-		<div class="card__footer">
-			<InputButton
-			text="Envoyer"
-			icon="login"
-			classes="primary block"
-			@click="submit"
-			/>
-		</div>
+		<CardComponent style="width: 420px;">
+			<template #header>
+				Connexion
+			</template>
+			<template #body>
+				<InputField
+					name="username"
+					label="Username"
+					type="text"
+					placeholder="Username..."
+					v-model:value="username" />
+				<InputField
+					name="password"
+					label="Password"
+					type="password"
+					placeholder="Password..."
+					v-model:value="password" />
+			</template>
+			<template #footer>
+				<InputButton
+					text="Envoyer"
+					icon="login"
+					classes="primary block"
+					@click="submit" />
+			</template>
+		</CardComponent>
 	</div>
 </template>
 
@@ -34,11 +34,13 @@
 	import InputField from './forms/InputField'
 	import InputButton from './forms/InputButton'
 	import AlertInfo from './forms/AlertInfo'
+	import CardComponent from './forms/CardComponent'
 	import { mapGetters, mapActions } from 'vuex'
 
 	export default {
 		name: 'LoginBox',
 		components: {
+			CardComponent,
 			InputField,
 			InputButton,
 			AlertInfo,
@@ -113,40 +115,3 @@
 		},
 	}
 </script>
-
-<style scoped>
-	.card {
-		display: grid;
-		grid-template-rows: auto 1fr auto;
-		/* A supprimer plutard  */
-		width: 400px;
-	}
-	.card__header {
-		font-size: 18px;
-		font-weight: 700;
-		border-top-left-radius: 4px;
-		border-top-right-radius: 4px;
-		border: 1px solid #152238;
-		background-color: #192841;
-		color: #FFF;
-		padding: 8px 16px;
-	}
-	.card__footer {
-		font-size: 18px;
-		font-weight: 700;
-		border-bottom-left-radius: 4px;
-		border-bottom-right-radius: 4px;
-		border: 1px solid #152238;
-		background-color: #23395D;
-		color: #FFF;
-		padding: 8px 16px;
-	}
-	.card__body {
-		background-color: #FFF;
-		display: flex;
-		flex-direction: column;
-		gap: 16px;
-		padding: 16px 32px;
-		border: 1px solid #152238;
-	}
-</style>
