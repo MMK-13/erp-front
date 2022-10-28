@@ -10,6 +10,7 @@
 </template>
 
 <script>
+	import { mapGetters } from 'vuex'
 	import SideBar from '@/components/SideBar'
 	import TopHeader from '@/components/TopHeader'
 	import MainContainer from '@/components/MainContainer'
@@ -18,12 +19,19 @@
 	export default {
 		name: 'LayoutContainer',
 		props: ['address', 'title'],
+		mounted() {
+			if (!this.isConnected)
+				this.$router.push('/')
+		},
 		components: {
 			SideBar,
 			TopHeader,
 			MainContainer,
 			BreadCrumb,
-		}
+		},
+		computed: {
+			...mapGetters(['isConnected']),
+		},
 	}
 </script>
 
