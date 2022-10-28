@@ -12,7 +12,14 @@
 <script>
 	export default {
 		name: 'AlertInfo',
-		props: ['text', 'type', 'show'],
+		props: {
+			text: String,
+			type: String,
+			show: {
+				type: Boolean,
+				default: false,
+			}
+		},
 		methods: {
 			hideAlert() {
 				this.$emit("update:show", false)
@@ -51,6 +58,8 @@
 		gap: 8px;
 		padding: 8px 16px;
 		border-radius: 4px;
+		z-index: 1000;
+		cursor: pointer;
 	}
 	.dangerous {
 		background-color: #F6685E;
