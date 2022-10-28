@@ -19,14 +19,18 @@ const mutations = {
 	},
 	CONNECTED: (state) => {
 		state.user.isLogged = true
-	}
+	},
+	SET_USERNAME: (state, username) => {
+		state.user.data.username = username
+	},
 }
 
 const actions = {
 	setConnected: (store, data) => {
 		store.commit('CONNECTED')
 		store.commit('SET_USER_INFO', data)
-	}
+	},
+	setUsername: (store, username) => store.commit('SET_USERNAME', username),
 }
 
 export default createStore({
