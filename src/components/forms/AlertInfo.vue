@@ -10,6 +10,8 @@
 </template>
 
 <script>
+	import { mapActions } from 'vuex'
+
 	export default {
 		name: 'AlertInfo',
 		props: {
@@ -21,8 +23,10 @@
 			}
 		},
 		methods: {
+			...mapActions(['resetNotification']),
 			hideAlert() {
 				this.$emit("update:show", false)
+				this.resetNotification()
 			},
 		},
 	}
