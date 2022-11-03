@@ -19,18 +19,17 @@
 					class="change" key="1" />
 			</SlideUp>
 		</div>
-		<AlertInfo :type="alert.type" :text="alert.text" v-model:show="alert.show" />
 	</LayoutContainer>
 </template>
 
 <script>
+	import { mapActions } from 'vuex'
 	import LayoutContainer from '@/components/LayoutContainer'
 	import SlideUp from '@/components/transitions/SlideUp'
 	import UserCardInfo from '@/components/profile/UserCardInfo'
 	import UpdatePassword from '@/components/profile/UpdatePassword'
 	import UpdateUsername from '@/components/profile/UpdateUsername'
-	import AlertInfo from '@/components/forms/AlertInfo'
-
+	
 	export default {
 		name: 'ProfileView',
 		components: {
@@ -39,26 +38,21 @@
 			UserCardInfo,
 			UpdatePassword,
 			UpdateUsername,
-			AlertInfo,
 		},
 		data() {
 			return {
-				alert: {
-					show: false,
-					text: '',
-					type: '',
-				},
 				showUpdateUsername: false,
 				showUpdatePassword: false,
 			}
 		},
 		methods: {
+			...mapActions(['setCustomNotification']),
 			setAlertMessage(payload) {
-				this.alert = {
+				this.setCustomNotification({
 					show: true,
 					type: payload.type,
 					text: payload.text
-				}
+				})
 			},
 			setUpdateUsername(payload) {
 				this.showUpdatePassword = false
