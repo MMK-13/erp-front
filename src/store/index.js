@@ -65,6 +65,7 @@ const actions = {
 	},
 	showModal: (store) => store.commit('SET_MODAL_VISIBILITY', true),
 	hideModal: (store) => store.commit('SET_MODAL_VISIBILITY', false),
+	setCustomNotification: (store, notification) => store.commit('SET_NOTIFICATION', notification),
 	savedSuccessfully: (store) => {
 		store.commit('SET_NOTIFICATION', {
 			show: true,

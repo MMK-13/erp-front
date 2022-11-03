@@ -1,26 +1,21 @@
 <template>
 	<div class="container">
 		<transition name="toast">
-			<div :class="'alert ' + type" @click="hideAlert" v-if="show">
-				<i class="material-icons">{{ type }}</i>
-				{{ text }}
+			<div :class="'alert ' + getNotification.type" @click="hideAlert" v-if="getNotification.show">
+				<i class="material-icons">{{ getNotification.type }}</i>
+				{{ getNotification.text }}
 			</div>
 		</transition>
 	</div>
 </template>
 
 <script>
-	import { mapActions } from 'vuex'
+	import { mapGetters, mapActions } from 'vuex'
 
 	export default {
 		name: 'AlertInfo',
-		props: {
-			text: String,
-			type: String,
-			show: {
-				type: Boolean,
-				default: false,
-			}
+		computed: {
+			...mapGetters(['getNotification']),
 		},
 		methods: {
 			...mapActions(['resetNotification']),

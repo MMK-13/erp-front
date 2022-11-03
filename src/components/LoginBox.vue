@@ -1,6 +1,6 @@
 <template>
 	<div style="margin-top: -240px;">
-		<AlertInfo :text="alert.text" :type="alert.type" v-model:show="showAlert" />
+		<AlertInfo />
 		<CardComponent style="width: 420px;">
 			<template #header>
 				Connexion
@@ -49,11 +49,6 @@
 			return {
 				username: '',
 				password: '',
-				showAlert: false,
-				alert: {
-					text: '',
-					type: '',
-				}
 			}
 		},
 		mounted() {
@@ -71,7 +66,7 @@
 			...mapGetters(['isConnected']),
 		},
 		methods: {
-			...mapActions(['setConnected']),
+			...mapActions(['setConnected', 'setCustomNotification']),
 			submit() {
 				if (this.username && this.password) {
 					fetch('http://erp.ru/user/login', {
@@ -82,34 +77,35 @@
 						})
 					}).then((response) => response.json())
 					.then((data) => {
-						this.showAlert = true
 						if (!data.isLogged) {
-							this.alert = {
+							this.setCustomNotification({
+								show: true,
 								text: 'Vos identifiants incorrects !',
 								type: 'dangerous'
-							}
+							})
 						} else {
 							this.setConnected(data.user)
-							this.alert = {
+							this.setCustomNotification({
+								show: true,
 								text: 'Connexion réussie !',
 								type: 'done'
-							}
+							})
 						}
 					})
 					.catch((error) => {
-						this.showAlert = true
-						this.alert = {
+						this.setCustomNotification({
+							show: true,
 							text: 'Impossible de se connecter. Veuillez vérifier votre connexion internet !',
 							type: 'dangerous'
-						}
+						})
 						console.log(error)
 					})
 				} else {
-					this.showAlert = true
-					this.alert = {
+					this.setCustomNotification({
+						show: true,
 						text: 'Veuillez remplir les champs !',
 						type: 'warning'
-					}
+					})
 				}
 			},
 		},
