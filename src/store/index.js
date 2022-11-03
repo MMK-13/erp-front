@@ -10,6 +10,7 @@ const state = {
 		type: '',
 		text: ''
 	},
+	modalVisibility: false,
 }
 
 const getters = {
@@ -17,6 +18,7 @@ const getters = {
 	userData: (state) => state.user.data,
 	fullname: (state) => state.user.data.firstname + ' ' + state.user.data.lastname,
 	getNotification: (state) => state.notification,
+	isModalVisibille: (state) => state.modalVisibility,
 }
 
 const mutations = {
@@ -25,13 +27,6 @@ const mutations = {
 	},
 	CONNECTED: (state) => {
 		state.user.isLogged = true
-	},
-	HELLO_MESSAGE: (state) => {
-		state.notification = {
-			show: true,
-			type: 'done',
-			text: 'Bienvenue ' + state.user.data.firstname + ' ' + state.user.data.lastname,
-		}
 	},
 	DISCONNECTED: (state) => {
 		state.user.isLogged = false
@@ -44,19 +39,38 @@ const mutations = {
 		state.notification = {
 			show: false
 		}
-	}
+	},
+	SET_MODAL_VISIBILITY: (state, visibility) => {
+		state.modalVisibility = visibility
+	},
+	SET_NOTIFICATION: (state, notification) => {
+		state.notification = notification
+	},
 }
 
 const actions = {
 	setConnected: (store, data) => {
 		store.commit('CONNECTED')
 		store.commit('SET_USER_INFO', data)
-		store.commit('HELLO_MESSAGE')
+		store.commit('SET_NOTIFICATION', {
+			show: true,
+			type: 'done',
+			text: 'Bienvenue ' + state.user.data.firstname + ' ' + state.user.data.lastname,
+		})
 	},
 	setDisconnected: (store) => store.commit('DISCONNECTED'),
 	setUsername: (store, username) => store.commit('SET_USERNAME', username),
 	resetNotification: (store) => {
 		store.commit('RESET_NOTIFICATION')
+	},
+	showModal: (store) => store.commit('SET_MODAL_VISIBILITY', true),
+	hideModal: (store) => store.commit('SET_MODAL_VISIBILITY', false),
+	savedSuccessfully: (store) => {
+		store.commit('SET_NOTIFICATION', {
+			show: true,
+			type: 'done',
+			text: 'Opération réussie !'
+		})
 	},
 }
 
