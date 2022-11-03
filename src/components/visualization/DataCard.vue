@@ -62,7 +62,7 @@
 	.card__content {
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
+		gap: 4px;
 	}
 	.card__content-title {
 		font-size: 20px;
@@ -72,9 +72,9 @@
 	}
 	.card__content-value {
 		color: #42B883;
-		font-size: 24px;
+		font-size: 32px;
 		font-weight: 900;
-		
+
 	}
 	.material-icons {
 		font-size: 48px;
