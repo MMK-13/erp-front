@@ -1,6 +1,10 @@
 <template>
 	<div class="data-table">
 		<div class="data-table__filter" v-if="searchBar">
+			<div class="search">
+				<label for="searchBar" class="search__label">Rechercher : </label>
+				<input id="searchBar" type="text" v-model="search" class="search__input">
+			</div>
 			<div class="element-by-page">
 				<label for="elementByPage" class="element-by-page__label">Eléments affiché</label>
 				<select id="elementByPage" v-model="elementByPage" class="element-by-page__select">
@@ -10,10 +14,7 @@
 					<option>100</option>
 				</select>
 			</div>
-			<div class="search">
-				<label for="searchBar" class="search__label">Rechercher : </label>
-				<input id="searchBar" type="text" v-model="search" class="search__input">
-			</div>
+			<InputButton text="Ajouer" icon="add_circle" classes="primary" @click="sendClick" />
 		</div>
 		<table>
 			<thead>
@@ -31,6 +32,11 @@
 		<tbody>
 			<tr v-for="(line, key) in resultByPage" :key="key">
 				<td v-for="(cell, index) in line" :key="index" v-html="cell"></td>
+			</tr>
+			<tr v-if="nothingToShow.show">
+				<td :colspan="nothingToShow.column" class="nothing-to-show">
+					Nothing to show
+				</td>
 			</tr>
 		</tbody>
 	</table>
@@ -57,8 +63,13 @@
 </template>
 
 <script>
+	import InputButton from './forms/InputButton'
+
 	export default {
 		name: 'DataTable',
+		components: {
+			InputButton,
+		},
 		props: ['thead', 'data', 'searchBar'],
 		data() {
 			return {
@@ -70,6 +81,9 @@
 			}
 		},
 		methods: {
+			sendClick() {
+				this.$emit('addNew')
+			},
 			sortField(array) {
 				return array.sort((a, b) => {
 					const i = this.sortedIndex
@@ -129,6 +143,11 @@
 			},
 			elementShowed() {
 				return this.resultByPage.length
+			},
+			nothingToShow() {
+				let show = (this.resultByPage.length > 0)? false : true
+				let column = this.thead.length
+				return { show, column }
 			}
 		},
 	}
@@ -249,5 +268,8 @@
 		background-color: #42B883;
 		color: #FFF;
 		font-weight: 700;
+	}
+	.nothing-to-show {
+		text-align: center;
 	}
 </style>
