@@ -43,7 +43,14 @@
 						route: '/dashboard',
 						title: 'Home',
 						icon: 'home'
-					},
+					}, {
+						route: '#',
+						title: 'Settings',
+						icon: 'settings',
+						children: [
+							{route: '/users', title: 'Users', icon: 'person'},
+						]
+					}
 				],
 			}
 		},
