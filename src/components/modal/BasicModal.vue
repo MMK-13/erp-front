@@ -1,5 +1,5 @@
 <template>
-	<div class="basic-modal" v-if="isModalVisibille" @click="close">
+	<div class="basic-modal" v-if="isModalVisibille">
 		<div class="modal" :style="{width: width}">
 			<div class="modal__header">
 				<slot name="header"></slot>
@@ -24,6 +24,7 @@
 		methods: {
 			...mapActions(['hideModal']),
 			close() {
+				console.log('Hide: from basic modal...')
 				this.hideModal()
 			},
 		},
@@ -41,21 +42,19 @@
 		transform: scale(1.1);
 	}
 	.basic-modal {
+		z-index: 102;
 		position: fixed;
 		top: 0;
 		left: 0;
-		width: 100%;
-		height: 100%;
 	}
 	.modal {
-		z-index: 102;
 		display: grid;
 		grid-template-rows: auto 1fr auto;
 		height: fit-content;
 		position: absolute;
 		top: 25%;
 		left: 50%;
-		transform: translate(-50%, -50%);
+		transform: translate(100%, 100%);
 	}
 	.modal__header {
 		display: flex;

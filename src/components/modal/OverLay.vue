@@ -5,18 +5,26 @@
 </template>
 
 <script>
-	import { mapGetters } from 'vuex'
+	import { mapGetters, mapActions } from 'vuex'
 
 	export default {
 		name: 'OverLay',
 		computed: {
 			...mapGetters(['isModalVisibille']),
 		},
+		methods: {
+			...mapActions(['hideModal']),
+			hide() {
+				console.log('Hide: from Overlay...')
+				this.hideModal()
+			}
+		}
 	}
 </script>
 
 <style>
 	.overlay {
+		z-index: 100;
 		background-color: #000;
 		position: fixed;
 		top: 0;
