@@ -54,7 +54,7 @@
 		position: absolute;
 		top: 25%;
 		left: 50%;
-		transform: translate(100%, 100%);
+		transform: translate(100%, 10%);
 	}
 	.modal__header {
 		display: flex;
